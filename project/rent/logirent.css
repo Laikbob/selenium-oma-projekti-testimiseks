@@ -1,0 +1,109 @@
+html, body {
+    height: 100%;
+    margin: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-image: url('carkey.jpg');
+    background-size: 100%;
+    background-position: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+
+form {
+    background: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    min-width: 300px;
+    margin-bottom: 30px; /* чтобы футер не слипался */
+}
+
+h1 {
+    border-radius: 16px;
+    background: black;
+    text-align: center;
+    padding: 25px 25px;
+    font-size: 30px;
+    color: #b1ea1e;
+    margin-top: 0;
+    margin-bottom: 20px;
+}
+
+table {
+    width: 100%;
+}
+
+td {
+    padding: 10px;
+    vertical-align: middle;
+}
+
+input[type="text"],
+input[type="password"] {
+    width: 100%;
+    padding: 8px 10px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 14px;
+}
+
+button[type="submit"] {
+    background: #020101;
+    color: #b1ea1e;
+    padding: 10px 20px;
+    margin-top: 15px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background 0.3s;
+}
+
+button[type="submit"]:hover {
+    background: #b1ea1e;
+    color: black;
+}
+
+.btn-link {
+    margin-left: 15px;
+    font-size: 14px;
+    text-decoration: none;
+    color: #020101;
+    background: #b1ea1e;
+    padding: 10px 20px;
+    border-radius: 6px;
+}
+
+.btn-link:hover {
+    text-decoration: none;
+    color: #b1ea1e;
+    background: #020101;
+}
+
+p.error {
+    color: #ff4c4c;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+footer {
+    background-color: #111;
+    text-align: center;
+    padding: 12px 20px;
+    font-size: 14px;
+    color: #f4f404;
+    user-select: none;
+    border-radius: 6px;
+    margin-top: auto;
+}

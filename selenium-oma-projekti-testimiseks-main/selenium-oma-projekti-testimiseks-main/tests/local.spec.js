@@ -23,7 +23,7 @@ test('Вход с логином и паролем', async ({ page }) => {
   await page.click('button[type="submit"]'); // или другой селектор кнопки
 
   // Проверка успешного входа (например, по наличию текста "Вы вошли" или личного кабинета)
-  await expect(page.locator('text=Добро пожаловать')).toBeVisible();
+  await expect(page.locator('text=Tere tulemast')).toBeVisible();
 });
 
 test('Фильтр автомобилей работает', async ({ page }) => {
@@ -50,4 +50,5 @@ test('Бронирование автомобиля', async ({ page }) => {
   // Проверка успешного бронирования
   await expect(page.locator('.status')).toHaveText(/Забронирован/i); // замените на селектор статуса
 });
+
 

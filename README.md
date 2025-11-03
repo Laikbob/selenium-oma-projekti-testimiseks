@@ -15,12 +15,12 @@ Eesmärk – testida oma veebiprojekti (sisselogimine, navigeerimine, vormid jms
 
 Kõik testid:
 
-pytest tests/
+  pytest tests/
 
 
-Üks test:
+  Üks test:
 
-pytest tests/test_login.py
+  pytest tests/test_login.py
 
 🧠 Näidis
 from selenium import webdriver

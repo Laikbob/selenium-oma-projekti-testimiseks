@@ -12,12 +12,12 @@ test('Проверка наличия заголовка', async ({ page }) => {
 });
 
 test('Вход с логином и паролем', async ({ page }) => {
-  await page.goto('https://andreilebedev24.thkit.ee/WEB/WEBphp/rent/index.php');
+  await page.goto('https://andreilebedev24.thkit.ee/WEB/WEBphp/rent/loginrent.php');
 
   // Ввод логина
-  await page.fill('input[name="username"]', 'your_username'); // замените на реальный логин
+  await page.fill('input[name="username"]', 'kasutaja'); // замените на реальный логин
   // Ввод пароля
-  await page.fill('input[name="password"]', 'your_password'); // замените на реальный пароль
+  await page.fill('input[name="password"]', 'kasutaja'); // замените на реальный пароль
 
   // Нажатие кнопки входа
   await page.click('button[type="submit"]'); // или другой селектор кнопки
@@ -50,3 +50,4 @@ test('Бронирование автомобиля', async ({ page }) => {
   // Проверка успешного бронирования
   await expect(page.locator('.status')).toHaveText(/Забронирован/i); // замените на селектор статуса
 });
+

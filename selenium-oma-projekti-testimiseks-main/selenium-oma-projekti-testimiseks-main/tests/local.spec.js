@@ -14,41 +14,45 @@ test('Проверка наличия заголовка', async ({ page }) => {
 test('Вход с логином и паролем', async ({ page }) => {
   await page.goto('https://andreilebedev24.thkit.ee/WEB/WEBphp/rent/loginrent.php');
 
-  // Ввод логина
-  await page.fill('input[name="username"]', 'kasutaja'); // замените на реальный логин
-  // Ввод пароля
-  await page.fill('input[name="password"]', 'kasutaja'); // замените на реальный пароль
+  await page.fill('input[name="username"]', 'kasutaja'); 
 
-  // Нажатие кнопки входа
-  await page.click('button[type="submit"]'); // или другой селектор кнопки
+  await page.fill('input[name="password"]', 'kasutaja'); 
 
-  // Проверка успешного входа (например, по наличию текста "Вы вошли" или личного кабинета)
+  await page.click('button[type="submit"]'); 
+
   await expect(page.locator('text=Tere tulemast')).toBeVisible();
 });
 
 test('Фильтр автомобилей работает', async ({ page }) => {
   await page.goto('https://andreilebedev24.thkit.ee/WEB/WEBphp/rent/index.php');
 
-  // Ввод фильтра (например, по марке)
-  await page.fill('input[name="search"]', 'Toyota'); // селектор и значение фильтра
-  await page.click('button[type="submit"]'); // кнопка поиска
+  await page.fill('input[name="mark"]', 'Toyota');
+  await page.fill('input[name="mudel"]', 'Corolla');
 
-  // Проверка, что отображаются только автомобили с Toyota
-  const cars = page.locator('.car-name'); // замените на реальный селектор названия автомобиля
+  await page.selectOption('select[name="status"]', 'vaba');
+
+  await page.click('button[type="submit"]');
+
+  const cars = page.locator('.car-name'); 
   const count = await cars.count();
+
+  expect(count).toBeGreaterThan(0);
+
   for (let i = 0; i < count; i++) {
-    await expect(cars.nth(i)).toContainText('Toyota');
+    await expect(cars.nth(i)).toContainText(/Toyota/i);
   }
 });
 
-test('Бронирование автомобиля', async ({ page }) => {
+test('Бронирование автомобиля работает корректно', async ({ page }) => {
   await page.goto('https://andreilebedev24.thkit.ee/WEB/WEBphp/rent/index.php');
 
-  // Нажатие на кнопку бронирования первого автомобиля
-  await page.click('.book-button'); // замените на селектор кнопки "Забронировать"
+  const formSelector = 'form[action*="rent"][method="POST"]'; 
 
-  // Проверка успешного бронирования
-  await expect(page.locator('.status')).toHaveText(/Забронирован/i); // замените на селектор статуса
+  await expect(page.locator(formSelector)).toHaveCountGreaterThan(0);
+
+  await page.click('button[name="book_car"]');
+
+  await expect(page.locator('text=broneeritud')).toBeVisible({ timeout: 5000 });
 });
 
 
